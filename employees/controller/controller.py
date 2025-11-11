@@ -35,47 +35,47 @@ def subtraction(request):
 #     -----------------------//------------------------
 
 
-#
-# import json
-# from django.http import JsonResponse
-# from django.views.decorators.csrf import csrf_exempt
-# from employees.service.service import AuthService
-#
-# @csrf_exempt
-# def register_view(request):
-#     if request.method == "POST":
-#         try:
-#             data = json.loads(request.body.decode("utf-8"))
-#             username = data.get("username")
-#             password = data.get("password")
-#
-#             service = AuthService()
-#             result = service.register_service(username, password)
-#
-#             if "error" in result:
-#                 return JsonResponse(result, status=400)
-#
-#             return JsonResponse(result, status=201)
-#         except Exception as e:
-#             return JsonResponse({"error": str(e)}, status=400)
-#     return JsonResponse({"error": "Invalid request method"}, status=405)
-#
-#
-# @csrf_exempt
-# def login_view(request):
-#     if request.method == "POST":
-#         try:
-#             data = json.loads(request.body.decode("utf-8"))
-#             username = data.get("username")
-#             password = data.get("password")
-#
-#             service = AuthService()
-#             result = service.login_service(username, password)
-#
-#             if "error" in result:
-#                 return JsonResponse(result, status=401)
-#
-#             return JsonResponse(result, status=200)
-#         except Exception as e:
-#             return JsonResponse({"error": str(e)}, status=400)
-#     return JsonResponse({"error": "Invalid request method"}, status=405)
+
+import json
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+from employees.service.service import AuthService
+
+@csrf_exempt
+def register_view(request):
+    if request.method == "POST":
+        try:
+            data = json.loads(request.body.decode("utf-8"))
+            username = data.get("username")
+            password = data.get("password")
+
+            service = AuthService()
+            result = service.register_service(username, password)
+
+            if "error" in result:
+                return JsonResponse(result, status=400)
+
+            return JsonResponse(result, status=201)
+        except Exception as e:
+            return JsonResponse({"error": str(e)}, status=400)
+    return JsonResponse({"error": "Invalid request method"}, status=405)
+
+
+@csrf_exempt
+def login_view(request):
+    if request.method == "POST":
+        try:
+            data = json.loads(request.body.decode("utf-8"))
+            username = data.get("username")
+            password = data.get("password")
+
+            service = AuthService()
+            result = service.login_service(username, password)
+
+            if "error" in result:
+                return JsonResponse(result, status=401)
+
+            return JsonResponse(result, status=200)
+        except Exception as e:
+            return JsonResponse({"error": str(e)}, status=400)
+    return JsonResponse({"error": "Invalid request method"}, status=405)
